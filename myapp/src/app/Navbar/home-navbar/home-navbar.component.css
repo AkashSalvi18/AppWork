@@ -1,0 +1,138 @@
+/* Heading styles */
+h1 {
+    padding: 0 1rem;
+}
+
+h2 {
+    padding: 1rem;
+}
+
+/* Navbar Heading Font */
+.navbar-heading {
+    flex-grow: 1;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.login-btn{
+    margin-left: auto;
+}
+/* Toolbar styles */
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    border: 4px;
+    background-color:white;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 16px;
+
+    /* Ensure padding and text don't overlap */
+    box-sizing: border-box;
+}
+
+/* Sidenav Container */
+mat-sidenav-container {
+    height: 100%;
+    margin-top: 20px; /* Add margin to prevent content from being hidden behind the fixed toolbar */
+}
+
+/* Sidenav Styles */
+mat-sidenav {
+    padding-top: 4.5rem;
+    background-color: #14213d;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: fixed;
+   
+}
+
+/* Sidenav content */
+mat-sidenav-content {
+    
+    padding-top: 3.5rem;
+}
+
+/* Flex entry in sidenav */
+mat-sidenav .entry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    color: #ffffff;
+}
+mat-sidenav :hover{
+    color: #fca311;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Mobile devices */
+@media screen and (max-width: 600px) {
+    mat-toolbar {
+        font-size: 14px;
+        padding: 0.75rem;
+    }
+
+    mat-sidenav {
+        padding-top: 4rem;
+        padding-left: 1rem;
+    }
+
+    mat-sidenav-content {
+        padding-top: 4rem;
+        padding-left: 0.2rem;
+    }
+
+    /* Adjust sidenav width for mobile */
+    mat-sidenav {
+        width: 50%;
+    }
+
+    .entry {
+        font-size: 14px;
+    }
+}
+
+/* Tablet devices */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    mat-toolbar {
+        font-size: 16px;
+        padding: 1rem;
+    }
+
+    mat-sidenav {
+        width: 30%;
+    }
+
+    .entry {
+        font-size: 16px;
+    }
+}
+
+/* Desktop and larger screens */
+@media screen and (min-width: 901px) {
+    mat-toolbar {
+        font-size: 18px;
+        padding: 1.25rem;
+    }
+
+    mat-sidenav {
+        width: 20%;
+    }
+
+    mat-sidenav-content {
+        padding-top: 4rem;
+    }
+
+    .entry {
+        font-size: 18px;
+    }
+}

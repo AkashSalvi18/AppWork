@@ -1,0 +1,36 @@
+<div class="edit-box">
+
+
+<h2 mat-dialog-title>Edit Recipe</h2>
+    <mat-dialog-content>
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput [(ngModel)]="data.id" disabled>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Recipe Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ingredients</mat-label>
+        <input matInput [(ngModel)]="data.ingredients">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Rating</mat-label>
+        <input matInput type="number" [(ngModel)]="data.rating">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Review Count</mat-label>
+        <input matInput type="number" [(ngModel)]="data.reviewCount">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Meal Type</mat-label>
+        <input matInput [(ngModel)]="data.mealType">
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button (click)="onSave()" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
+
+  </div>

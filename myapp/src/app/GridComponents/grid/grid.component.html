@@ -1,0 +1,87 @@
+<div class="search-container">
+  <!-- Search input for filtering the recipes -->
+  <input type="text" matInput [(ngModel)]="searchTerm" [matAutocomplete]="auto" placeholder="Search..." class="search-bar"/>
+  <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let recipe of filteredRecipesList()" [value]="recipe.name">
+        {{ recipe.name }}
+      </mat-option>
+    </mat-autocomplete>
+</div>
+
+
+  <!-- Container for Menu and Refresh Icon -->
+  <div class="header-actions">
+    <!-- Menu Icon -->
+    <button mat-icon-button [matMenuTriggerFor]="topMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <!-- Menu with Refresh and other options -->
+    <mat-menu #topMenu="matMenu">
+      <button mat-menu-item (click)="refreshData()">
+        <mat-icon>refresh</mat-icon> Refresh
+      </button>
+     
+    </mat-menu>
+
+    <!-- Refresh Icon -->
+    <button mat-icon-button (click)="refreshData()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+  <div class="grid-container">
+  <table class="grid-table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Recipe Name</th>
+        <th>Ingredients</th>
+        <th>Rating</th>
+        <th>Review Count</th>
+        <th>Meal Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Display filtered recipes with pagination -->
+      <tr *ngFor="let recipe of paginatedData">
+        <td>{{ recipe.id }}</td>
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.ingredients.join(', ') }}</td>
+        <td>{{ recipe.rating }}</td>
+        <td>{{ recipe.reviewCount }}</td>
+        <td>{{ recipe.mealType.join(', ') }}</td>
+        <td>
+          <!-- Action Button with Vertical Dots (More Options) -->
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+          <!-- Menu for Edit and Delete -->
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editRecipe(recipe)" class="action-btn">
+              <mat-icon>edit</mat-icon> Edit
+            </button>
+            <button mat-menu-item (click)="deleteRecipe(recipe)" class="action-btn">
+              <mat-icon>delete</mat-icon> Delete
+            </button>
+          </mat-menu>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <!-- Footer row with paginator -->
+      <tr>
+        <td colspan="7">
+          <!-- The paginator now spans across all 4 columns of the table -->
+          <mat-paginator [length]="filteredRecipes.length"
+                         [pageSize]="pageSize"
+                         [pageSizeOptions]="[5, 10, 25, 100]"
+                         (page)="onPageChange($event)"
+                         aria-label="Select page">
+          </mat-paginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

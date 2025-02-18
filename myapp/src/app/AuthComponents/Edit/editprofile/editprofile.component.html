@@ -1,0 +1,24 @@
+<mat-card>
+   
+   <span><mat-icon>edit</mat-icon>Edit Profile</span>
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="user@gmail.com" [formControl]="email" required>
+    </mat-form-field>
+ 
+    <mat-form-field>
+        <mat-label>Phone No</mat-label>
+        <input matInput placeholder="+91-9999999999" required>
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Submit</button>
+</mat-card>

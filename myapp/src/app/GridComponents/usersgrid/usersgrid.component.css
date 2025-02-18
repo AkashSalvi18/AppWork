@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+    margin-right: 4rem;
+}
+
+.mat-elevation-z8{
+    margin-top: 2rem;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2rem;
+}

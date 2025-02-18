@@ -1,0 +1,61 @@
+<mat-toolbar color="primary">
+    <!-- <button mat-icon-button aria-label="Menu icon">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+    <h2 class="navbar-heading">Navbar</h2> 
+</mat-toolbar>
+<mat-sidenav-container autosize>
+    <mat-sidenav [opened]="true" mode="side">
+        <mat-nav-list>
+            <a mat-list-item routerLink="home">
+                <span class="entry">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLink="grid">
+                <span class="entry">
+                    <mat-icon>restaurant</mat-icon>
+                    <span>Recipes</span>
+                </span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLink="usersgrid">
+                <span class="entry">
+                    <mat-icon>group</mat-icon>
+                    <span>Users</span>
+                </span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item routerLink="edit">
+                <span class="entry">
+                    <mat-icon>person</mat-icon>
+                    <span>Edit Profile</span>
+                </span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item>
+                <span class="entry">
+                    <mat-icon>logout</mat-icon>
+                    <span (click)="onClick()">Logout</span>
+                </span>
+            </a>
+        </mat-nav-list>
+        <mat-nav-list>
+            <a mat-list-item>
+                <span class="entry">
+                    <mat-icon>settings</mat-icon>
+                    <span>Settings</span>
+                </span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>LogIn</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+    <!-- Username Field Container -->
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="Enter your email" />
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+          Please enter a valid email address.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Password Field Container -->
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Enter your password" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="togglePasswordVisibility()"
+          [attr.aria-label]="'Toggle password visibility'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+          Password must be at least 8 characters long
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Submit Button -->
+    <section>
+      <div class="example-button-row">
+        <button type="submit" [disabled]="loginForm.invalid" mat-raised-button>Login</button>
+      </div>
+    </section>
+  </form>
+  <p *ngIf="message">{{ message }}</p> <!-- Display message after login attempt -->
+</div>

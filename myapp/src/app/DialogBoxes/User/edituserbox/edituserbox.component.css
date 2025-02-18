@@ -1,0 +1,23 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+h2{
+    text-align: center;
+}
+  .full-width {
+    width: 100%;
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
