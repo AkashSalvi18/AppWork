@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "KE0L9NGGue4xlpcvcwE3U4Uwptmu/WYwgguL8Q10hyw=",
+  "Source": "IdentityManagerWebApp",
+  "BasePath": "_content/IdentityManagerWebApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
