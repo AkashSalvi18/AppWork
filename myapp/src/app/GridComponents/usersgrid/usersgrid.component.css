@@ -10,3 +10,8 @@ table {
     justify-content: center;
     margin-left: 2rem;
 }
+
+.red-snackbar{
+    color: white;
+    background-color: green;
+}

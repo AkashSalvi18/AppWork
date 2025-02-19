@@ -21,3 +21,14 @@ h2{
     padding: 8px 16px;
     font-size: 14px;
   }
+  /* Success Snackbar */
+success-snackbar {
+  background-color: green;
+  color: white;
+}
+
+/* Error Snackbar */
+.error-snackbar {
+  background-color: red;
+  color: white;
+}

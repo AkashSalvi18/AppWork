@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http'; // Import HttpClient to make requests
 import { Observable } from 'rxjs';
@@ -12,11 +12,12 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../Services/authservice';
 import { User } from '../../Models/User';
 import { AuthenticateService } from '../../Services/authenticate.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   standalone:true,
-  imports:[ReactiveFormsModule,CommonModule,MatFormFieldModule,MatError,MatIcon,MatLabel,HttpClientModule,MatInputModule,MatInput,MatButton,MatButtonModule,MatIconModule],
+  imports:[ReactiveFormsModule,CommonModule,MatFormFieldModule,MatError,MatIcon,MatLabel,HttpClientModule,MatInputModule,MatInput,MatButton,MatButtonModule,MatIconModule,MatSnackBarModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -24,7 +25,9 @@ export class LoginComponent {
   // users:{email:string,password:string}[]=users;
   loginForm: FormGroup;  
   hide: boolean = true;  
-  message: string = '';  
+  message: string = ''; 
+  
+  private _snackbar=inject(MatSnackBar);
 
   private apiUrl="https://localhost:7033/api/Login/login";
 
@@ -84,7 +87,8 @@ export class LoginComponent {
    .subscribe(
     (res) => {
       this.message = 'Login Successful';
-      alert('Login Successful');
+      // alert('Login Successful');
+      this.openSnackBar('Login Successful','Close');
       this.router.navigate(['/dashboard']);
     },
     (error) => {
@@ -121,5 +125,14 @@ export class LoginComponent {
   togglePasswordVisibility(): void {
     this.hide = !this.hide;
     this.cd.detectChanges(); 
+  }
+
+  openSnackBar(message:string,action:string):void{
+    this._snackbar.open(message,action,{
+      duration:4000,
+      horizontalPosition:'center',
+      verticalPosition:'top',
+      panelClass:['success-message']
+    })
   }
 }

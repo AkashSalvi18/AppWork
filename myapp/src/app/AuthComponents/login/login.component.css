@@ -49,3 +49,9 @@
     background-color: aqua;
     font-size:2px;
   } */
+
+  .mat-snack-bar .success-message {
+    background-color: green;
+    color: white;
+  }
+  

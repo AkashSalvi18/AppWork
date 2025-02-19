@@ -1,0 +1,165 @@
+/* General styling */
+.home-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Header Styling */
+  .home-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .home-header h1 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .home-header p {
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  /* Featured Section */
+  .featured-section {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* Ensure responsiveness for smaller screens */
+  }
+  
+  /* Featured Section Heading */
+  .featured-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    width: 100%; /* Make sure the heading takes full width */
+  }
+  
+  /* Styling for Cards */
+  .mat-card {
+    width: 100%; /* By default, make each card take up full width */
+    max-width: 300px; /* Limit card width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  .mat-card:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mat-card-header {
+    background-color: #f8f9fa;
+  }
+  
+  .mat-card-title {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .mat-card-content {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Action Button Styling */
+  .action-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  button {
+    /* background-color: #007bff; */
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* Mobile Devices */
+  @media screen and (max-width: 600px) {
+    .home-header h1 {
+      font-size: 2rem;
+    }
+  
+    .home-header p {
+      font-size: 1rem;
+    }
+  
+    .featured-section h2 {
+      font-size: 1.5rem;
+    }
+  
+    .mat-card {
+      width: 100%; /* Cards take full width on small screens */
+      max-width: 100%; /* Ensure the cards occupy full width */
+    }
+  
+    button {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+  
+  /* Tablet Devices */
+  @media screen and (min-width: 601px) and (max-width: 900px) {
+    .home-header h1 {
+      font-size: 2.5rem;
+    }
+  
+    .home-header p {
+      font-size: 1.1rem;
+    }
+  
+    .featured-section {
+      gap: 10px; /* Reduce gap between cards */
+    }
+  
+    .mat-card {
+      width: 48%; /* Cards take 48% of container width on tablets */
+      max-width: 48%; 
+    }
+  
+    button {
+      font-size: 1.1rem;
+      padding: 9px 18px;
+    }
+  }
+  
+  /* Desktop Devices and Larger Screens */
+  @media screen and (min-width: 901px) {
+    .home-header h1 {
+      font-size: 3rem;
+    }
+  
+    .home-header p {
+      font-size: 1.2rem;
+    }
+  
+    .featured-section {
+      gap: 20px; /* Larger gap between cards on larger screens */
+    }
+  
+    .mat-card {
+      width: 30%; /* Cards take 30% of container width on large screens */
+      max-width: 30%; 
+    }
+  
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+    }
+  }
+  

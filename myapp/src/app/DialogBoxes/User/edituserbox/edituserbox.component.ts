@@ -46,12 +46,17 @@ export class EdituserboxComponent {
 
       this.http.put(`https://localhost:7033/api/Login/update/${this.data.id}`, updatedUser).subscribe({
         next: () => {
-          alert('User updated successfully!');
-          this.dialogRef.close(true);
+          // alert('User updated successfully!');
+          this._snackBar.open("User Updated Successfully","Close");
+          setTimeout(()=>{
+            this.dialogRef.close(true);
+          },3000)
+          
         },
         error: (error) => {
           console.error('Update failed:', error);
-          alert(`Update failed: ${error.status} - ${error.statusText}`);
+          this.openSnackBar(`Update failed: ${error.status} - ${error.statusText}`, 'Close');
+          // alert(`Update failed: ${error.status} - ${error.statusText}`);
         }
       });
     }
@@ -66,7 +71,12 @@ export class EdituserboxComponent {
     });
   }
 
-  openSnackBar(message:string,action:string){
-    this._snackBar.open(message,action);
+  openSnackBar(message:string,action:string):void{
+    this._snackBar.open(message,action,{
+      duration:40000,
+      horizontalPosition:'center',
+      verticalPosition:'top',
+      panelClass:['success-snackbar']
+    });
   }
 }

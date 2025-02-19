@@ -14,6 +14,7 @@ import {MatHeaderCellDef, MatTableModule} from '@angular/material/table'
 import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { EditrecipeboxComponent } from '../../DialogBoxes/Recipe/editrecipebox/editrecipebox.component';
+import { MatInput, MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-grid',
   standalone:true,
@@ -26,7 +27,7 @@ import { EditrecipeboxComponent } from '../../DialogBoxes/Recipe/editrecipebox/e
     MatMenuModule,
     MatButtonModule,
     MatAutocompleteModule,
-  MatTableModule],
+  MatTableModule,MatInputModule,MatInput],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.css'
 })

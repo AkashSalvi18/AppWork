@@ -1,15 +1,15 @@
-<div class="search-container">
-  <!-- Search input for filtering the recipes -->
-  <input type="text" matInput [(ngModel)]="searchTerm" [matAutocomplete]="auto" placeholder="Search..." class="search-bar"/>
-  <mat-autocomplete #auto="matAutocomplete">
+<div class="mat-elevation-z8">
+  <!-- Search container with input and autocomplete -->
+  <div class="search-container">
+    <input type="text" matInput [(ngModel)]="searchTerm" [matAutocomplete]="auto" placeholder="Search..." class="search-bar"/>
+    <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let recipe of filteredRecipesList()" [value]="recipe.name">
         {{ recipe.name }}
       </mat-option>
     </mat-autocomplete>
-</div>
+  </div>
 
-
-  <!-- Container for Menu and Refresh Icon -->
+  <!-- Header actions (Menu and Refresh buttons) -->
   <div class="header-actions">
     <!-- Menu Icon -->
     <button mat-icon-button [matMenuTriggerFor]="topMenu">
@@ -21,11 +21,153 @@
       <button mat-menu-item (click)="refreshData()">
         <mat-icon>refresh</mat-icon> Refresh
       </button>
-     
     </mat-menu>
 
     <!-- Refresh Icon -->
     <button mat-icon-button (click)="refreshData()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+
+  <!-- Grid/Table Container -->
+  <div class="grid-container">
+    <table mat-table [dataSource]="paginatedData" matSort class="full-width-table">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let recipe">{{ recipe.id }}</td>
+      </ng-container>
+
+      <!-- Recipe Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Recipe Name</th>
+        <td mat-cell *matCellDef="let recipe">{{ recipe.name }}</td>
+      </ng-container>
+
+      <!-- Ingredients Column -->
+      <ng-container matColumnDef="ingredients">
+        <th mat-header-cell *matHeaderCellDef>Ingredients</th>
+        <td mat-cell *matCellDef="let recipe">{{ recipe.ingredients.join(', ') }}</td>
+      </ng-container>
+
+      <!-- Rating Column -->
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef>Rating</th>
+        <td mat-cell *matCellDef="let recipe">{{ recipe.rating }}</td>
+      </ng-container>
+
+      <!-- Review Count Column -->
+      <ng-container matColumnDef="reviewCount">
+        <th mat-header-cell *matHeaderCellDef>Review Count</th>
+        <td mat-cell *matCellDef="let recipe">{{ recipe.reviewCount }}</td>
+      </ng-container>
+
+      <!-- Meal Type Column -->
+      <ng-container matColumnDef="mealType">
+        <th mat-header-cell *matHeaderCellDef>Meal Type</th>
+        <td mat-cell *matCellDef="let recipe">{{ recipe.mealType.join(', ') }}</td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let recipe">
+          <!-- Action Buttons for Edit and Delete -->
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editRecipe(recipe)" class="action-btn">
+              <mat-icon>edit</mat-icon> Edit
+            </button>
+            <button mat-menu-item (click)="deleteRecipe(recipe)" class="action-btn">
+              <mat-icon>delete</mat-icon> Delete
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <!-- Table Header and Rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Pagination -->
+    <mat-paginator [length]="filteredRecipes.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[2, 10, 25, 100]"
+                   (page)="onPageChange($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+</div>
+
+
+
+<!-- 
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="full-width-table">
+    <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef>Password</th>
+      <td mat-cell *matCellDef="let user">{{ user.password }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-icon-button color="primary" (click)="openEditDialog(user)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteUser(user)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div> using the above html styling generate the styling for below component
+<div class="search-container"> -->
+  <!-- Search input for filtering the recipes -->
+  <!-- <input type="text" matInput [(ngModel)]="searchTerm" [matAutocomplete]="auto" placeholder="Search..." class="search-bar"/>
+  <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let recipe of filteredRecipesList()" [value]="recipe.name">
+        {{ recipe.name }}
+      </mat-option>
+    </mat-autocomplete>
+</div> -->
+
+
+  <!-- Container for Menu and Refresh Icon -->
+  <!-- <div class="header-actions"> -->
+    <!-- Menu Icon -->
+    <!-- <button mat-icon-button [matMenuTriggerFor]="topMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button> -->
+
+    <!-- Menu with Refresh and other options -->
+    <!-- <mat-menu #topMenu="matMenu">
+      <button mat-menu-item (click)="refreshData()">
+        <mat-icon>refresh</mat-icon> Refresh
+      </button> -->
+     
+    <!-- </mat-menu> -->
+
+    <!-- Refresh Icon -->
+    <!-- <button mat-icon-button (click)="refreshData()">
       <mat-icon>refresh</mat-icon>
     </button>
   </div>
@@ -43,7 +185,7 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Display filtered recipes with pagination -->
+    
       <tr *ngFor="let recipe of paginatedData">
         <td>{{ recipe.id }}</td>
         <td>{{ recipe.name }}</td>
@@ -52,12 +194,12 @@
         <td>{{ recipe.reviewCount }}</td>
         <td>{{ recipe.mealType.join(', ') }}</td>
         <td>
-          <!-- Action Button with Vertical Dots (More Options) -->
+         
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
 
-          <!-- Menu for Edit and Delete -->
+          
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="editRecipe(recipe)" class="action-btn">
               <mat-icon>edit</mat-icon> Edit
@@ -70,10 +212,10 @@
       </tr>
     </tbody>
     <tfoot>
-      <!-- Footer row with paginator -->
+     
       <tr>
         <td colspan="7">
-          <!-- The paginator now spans across all 4 columns of the table -->
+          
           <mat-paginator [length]="filteredRecipes.length"
                          [pageSize]="pageSize"
                          [pageSizeOptions]="[5, 10, 25, 100]"
@@ -84,4 +226,4 @@
       </tr>
     </tfoot>
   </table>
-</div>
+</div> -->

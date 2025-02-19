@@ -10,20 +10,21 @@ h2 {
 /* Navbar Heading Font */
 .navbar-heading {
     flex-grow: 1;
+    font-size: 20rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-
-.login-btn{
+.login-btn {
     margin-left: auto;
 }
+
 /* Toolbar styles */
 mat-toolbar {
     position: fixed;
     top: 0;
     z-index: 2;
     border: 4px;
-    background-color:white;
+    background-color: white;
     color: black;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
@@ -32,9 +33,10 @@ mat-toolbar {
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 0 16px;
+}
 
-    /* Ensure padding and text don't overlap */
+/* Ensure padding and text don't overlap */
+mat-toolbar {
     box-sizing: border-box;
 }
 
@@ -51,12 +53,12 @@ mat-sidenav {
     padding-left: 1rem;
     padding-right: 1rem;
     position: fixed;
-   
+    z-index: 1;
+    transition: transform 0.3s ease;
 }
 
 /* Sidenav content */
 mat-sidenav-content {
-    
     padding-top: 3.5rem;
 }
 
@@ -68,8 +70,9 @@ mat-sidenav .entry {
     padding: 0.75rem;
     color: #ffffff;
 }
-mat-sidenav :hover{
-    color: #fca311;
+
+mat-sidenav .entry:hover {
+    color:lightgreen;
 }
 
 /* Media Queries for Responsiveness */
@@ -93,11 +96,17 @@ mat-sidenav :hover{
 
     /* Adjust sidenav width for mobile */
     mat-sidenav {
-        width: 50%;
+        width: 60%;  /* Allow sidenav to take 60% width on mobile */
     }
 
+    /* Adjust entry size */
     .entry {
         font-size: 14px;
+    }
+
+    /* Make the navbar content more compact on mobile */
+    .navbar-heading {
+        font-size: 12px;
     }
 }
 
@@ -109,10 +118,19 @@ mat-sidenav :hover{
     }
 
     mat-sidenav {
-        width: 30%;
+        width: 50%;
+    }
+
+    mat-sidenav-content {
+        padding-top: 4rem;
     }
 
     .entry {
+        font-size: 16px;
+    }
+
+    /* Navbar heading font size for tablet */
+    .navbar-heading {
         font-size: 16px;
     }
 }
@@ -135,4 +153,57 @@ mat-sidenav :hover{
     .entry {
         font-size: 18px;
     }
+
+    /* Navbar heading font size for desktop */
+    .navbar-heading {
+        font-size: 18px;
+    }
+}
+
+/* Make the container a flexbox to align items horizontally */
+.entry {
+    display: flex;
+    align-items: center; /* Vertically center items */
+}
+
+/* Optional: Adding some margin to space the icon and text */
+.entry mat-icon {
+    margin-right: 8px; /* Adds some space between the icon and the text */
+}
+
+/* Optional: Style for the text for better alignment */
+.text {
+    display: inline-block;
+    line-height: 1; /* Ensures text aligns with the icon vertically */
+}
+
+
+/*Logout Heading Button*/
+.logout-heading .text {
+    display: flex;
+    align-items: center; 
+    transition: color 0.3s ease; 
+}
+
+.logout-heading .entry:hover{
+    color: red;  /* Change color to red when hovered */
+}
+
+.logout-heading .entry mat-icon{
+    transition: color 0.3s ease;
+}
+
+/*Edit Profile Button*/
+.edit-profile .text {
+    display: flex;
+    align-items: center; 
+    transition: color 0.3s ease; 
+}
+
+.edit-profile .entry:hover{
+    color: blue;  /* Change color to red when hovered */
+}
+
+.edit-profile .entry mat-icon{
+    transition: color 0.3s ease;
 }
