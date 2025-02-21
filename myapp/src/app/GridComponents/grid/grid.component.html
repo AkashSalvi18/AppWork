@@ -47,7 +47,9 @@
       <!-- Ingredients Column -->
       <ng-container matColumnDef="ingredients">
         <th mat-header-cell *matHeaderCellDef>Ingredients</th>
-        <td mat-cell *matCellDef="let recipe">{{ recipe.ingredients.join(', ') }}</td>
+        <td mat-cell *matCellDef="let recipe">{{ getIngredients(recipe) }}</td>
+        <!-- <td mat-cell *matCellDef="let recipe">{{ recipe.ingredients instanceof Array ? recipe.ingredients.join(', ') : recipe.ingredients }}</td> -->
+
       </ng-container>
 
       <!-- Rating Column -->
@@ -65,7 +67,7 @@
       <!-- Meal Type Column -->
       <ng-container matColumnDef="mealType">
         <th mat-header-cell *matHeaderCellDef>Meal Type</th>
-        <td mat-cell *matCellDef="let recipe">{{ recipe.mealType.join(', ') }}</td>
+        <td mat-cell *matCellDef="let recipe">{{ getMealType(recipe) }}</td>
       </ng-container>
 
       <!-- Actions Column -->
@@ -96,7 +98,7 @@
     <!-- Pagination -->
     <mat-paginator [length]="filteredRecipes.length"
                    [pageSize]="pageSize"
-                   [pageSizeOptions]="[2, 10, 25, 100]"
+                   [pageSizeOptions]="[2,5, 10, 25, 100]"
                    (page)="onPageChange($event)"
                    aria-label="Select page">
     </mat-paginator>

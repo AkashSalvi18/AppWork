@@ -8,5 +8,4 @@ import { HomeNavbarComponent } from "../../Navbar/home-navbar/home-navbar.compon
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-
 }

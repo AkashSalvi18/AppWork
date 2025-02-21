@@ -7,6 +7,7 @@ import { EditprofileComponent } from './AuthComponents/Edit/editprofile/editprof
 import { DashboardComponent } from './Dashboard/dashboard/dashboard.component';
 import { UsersgridComponent } from './GridComponents/usersgrid/usersgrid.component';
 import { SignupComponent } from './AuthComponents/signup/signup.component';
+import { CanDeactivateGuard } from './Guards/AuthGuards/can-deactivate';
 
 export const routes: Routes = [
     {path:'',pathMatch:'full',redirectTo:'login'},
@@ -14,7 +15,7 @@ export const routes: Routes = [
     {path:'navbar',component:HomeNavbarComponent},
     {path:'home',component:HomeComponent},
     {path:'edit',component:EditprofileComponent},
-    {path:'signup',component:SignupComponent},
+    {path:'signup',component:SignupComponent,canDeactivate:[CanDeactivateGuard]},
     {path:'dashboard',component:DashboardComponent,children:[
         {path:'grid',component:GridComponent},
         {path:'home',component:HomeComponent},

@@ -44,6 +44,7 @@
         <button type="submit" [disabled]="loginForm.invalid" mat-raised-button>Login</button>
       </div>
     </section>
+    <div><a routerLink="/signup">New User SignUp</a></div>
   </form>
   <p *ngIf="message">{{ message }}</p> <!-- Display message after login attempt -->
 </div>

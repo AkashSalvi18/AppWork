@@ -17,6 +17,7 @@ export class HomeNavbarComponent {
   constructor(private router:Router){}
   onClick():void{
     this.isAuthenticated=false;
+    localStorage.removeItem('jwtToken');
     this.router.navigate(['/login']);
   }
 }

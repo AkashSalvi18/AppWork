@@ -36,7 +36,7 @@ export class GridComponent implements OnInit {
   searchTerm:string='';
   id:number=0;
   recipes:any[]=[];
-  pageSize:number=10;
+  pageSize:number=5;
   pageIndex:number=0;
   paginatedData:any[]=[];
   filteredRecipes:any[]=[];
@@ -49,16 +49,12 @@ export class GridComponent implements OnInit {
 
   //Lifecycle method to initialize
   ngOnInit(): void {
-    // this.http.get('https://localhost:7033/api/Recipes/recipes').subscribe((res:any)=>{
-    //   this.recipes=res;
-    //   this.filteredRecipes=this.recipes;
-    //   this.updatePaginatedData();
-    // })
+
     this.fetchData();
   }
   // Fetch data from API
   fetchData(): void {
-    this.http.get('https://localhost:7033/api/Recipes/recipes').subscribe((res: any) => {
+    this.http.get('https://localhost:44352/api/Recipe/recipes').subscribe((res: any) => {
       this.recipes = res;
       this.filteredRecipes = res;
       this.updatePaginatedData();
@@ -74,7 +70,7 @@ export class GridComponent implements OnInit {
   
   refreshData() {
     console.log('Refreshing data...');
-    this.http.get('https://localhost:7033/api/Recipes/recipes').subscribe((res:any)=>{
+    this.http.get('https://localhost:44352/api/Recipe/recipes').subscribe((res:any)=>{
       this.recipes=res;
       this.filteredRecipes=res;
       this.updatePaginatedData();
@@ -96,10 +92,41 @@ export class GridComponent implements OnInit {
   filteredRecipesList() :any[]{
     return this.filteredRecipes.filter(recipe =>
       recipe.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      recipe.ingredients.some((ingredient: string) => ingredient.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      (Array.isArray(recipe.ingredients)&&recipe.ingredients.some((ingredient: string) => ingredient.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    )
     );
   }
 
+
+    // Method to check if ingredients is an array and join them
+    getIngredients(recipe: any): string {
+      if (typeof recipe.ingredients === 'string') {
+        try {
+          // to parse it as a JSON string into an array
+          const parsedIngredients = JSON.parse(recipe.ingredients);
+          return Array.isArray(parsedIngredients) ? parsedIngredients.join(', ') : recipe.ingredients;
+        } catch (e) {
+          // If parsing fails, just return the string as original string
+          return recipe.ingredients;
+        }
+      }
+      return Array.isArray(recipe.ingredients) ? recipe.ingredients.join(', ') : recipe.ingredients;
+    }
+
+    getMealType(recipe:any):string{
+      if (typeof recipe.mealType === 'string') {
+        try {
+          // Try to parse it as a JSON string into an array
+          const parsedMealType = JSON.parse(recipe.mealType);
+          return Array.isArray(parsedMealType) ? parsedMealType.join(', ') : recipe.mealType;
+        } catch (e) {
+          // If parsing fails, just return the string as is
+          return recipe.mealType;
+        }
+      }
+      return Array.isArray(recipe.mealType)?recipe.mealType.join(', '):recipe.mealType;
+
+    }
  // Open dialog for editing recipe
  editRecipe(recipe: any) {
   const dialogRef = this.dialog.open(EditrecipeboxComponent, {
@@ -109,7 +136,7 @@ export class GridComponent implements OnInit {
 
   dialogRef.afterClosed().subscribe(updatedRecipe => {
     if (updatedRecipe) {
-      this.http.put(`https://localhost:7033/api/Recipes/update_recipes/${updatedRecipe.id}`, updatedRecipe)
+      this.http.put(`https://localhost:44352/api/Recipe/update_recipes/${updatedRecipe.id}`, updatedRecipe)
         .subscribe(response => {
           console.log('Recipe updated:', response);
           this.refreshData();
@@ -121,7 +148,7 @@ export class GridComponent implements OnInit {
 //delete a recipe
 deleteRecipe(recipe:any){
   console.log('Deleting recipe',recipe);
-  this.http.delete(`https://localhost:7033/api/Recipes/delete_recipes/${recipe.id}`)
+  this.http.delete(`https://localhost:44352/api/Recipe/delete_recipes/${recipe.id}`)
     .subscribe(response => {
       console.log('Recipe deleted:', response);
       this.recipes = this.recipes.filter(r => r !== recipe);

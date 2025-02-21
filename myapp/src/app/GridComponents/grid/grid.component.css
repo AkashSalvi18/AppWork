@@ -1,6 +1,6 @@
 /* Container for search input */
 .search-container {
-  display: flex;
+  display:flex;
   justify-content: center;
   padding: 16px;
 }
@@ -12,8 +12,7 @@
   padding: 8px;
   font-size: 16px;
   border-radius: 4rem;
-  margin-top: 5rem;
-  margin-bottom: 0rem;
+  margin-top: 1 rem;
   border: 1px solid #ccc;
 }
 
@@ -27,7 +26,6 @@
 
 /* Table container style */
 .grid-container {
-  margin-top: 20px;
   padding: 16px;
   border-radius: 8px;
   background-color: #fff;
@@ -35,11 +33,12 @@
   max-width: 1200px; /* Ensure it doesn't grow too large */
   margin-left: auto;
   margin-right: auto;
+  height: 60%;
+  position: relative;
 }
 
 /* Styling for the table */
 .grid-table {
-  width: 100%;
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow applied to table */
 }

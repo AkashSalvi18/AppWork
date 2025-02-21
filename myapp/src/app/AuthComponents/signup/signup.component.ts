@@ -4,68 +4,78 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
-import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatError, MatFormField, MatFormFieldControl, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInput, MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { CanComponentDeactivate, CanDeactivateGuard } from '../../Guards/AuthGuards/can-deactivate';
+
 // Custom Password Match Validator
 function passwordMatchValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
   const password = formGroup.get('password')?.value;
   const confirmPassword = formGroup.get('confirmPassword')?.value;
   return password && confirmPassword && password !== confirmPassword ? { passwordMismatch: true } : null;
 }
+
 @Component({
   selector: 'app-signup',
   standalone:true,
-  imports: [MatFormField,
+  imports: [
     CommonModule,
-    MatInput,
+    MatInputModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
     MatButtonModule,
-    MatError,
-    MatCard,
-    MatCardContent,
-    MatCardTitle,
-    MatCardHeader,
-    MatLabel,
-  HttpClientModule],
+    MatIconModule,
+    MatSelectModule,
+    MatOptionModule,
+    HttpClientModule
+  ],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
-  signupForm!:FormGroup;
+export class SignupComponent implements CanComponentDeactivate{
+  signupForm: FormGroup;
 
-  constructor(private fb:FormBuilder,private router:Router,private http:HttpClient){
-    this.signupForm=this.fb.group({
-      email:['',[Validators.required,Validators.email]],
-      fname:['',[Validators.required]],
-      lname:['',[Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // Assuming a 10-digit phone number
-      address: ['', [Validators.required]],
-      password:['',[Validators.required]],
-      confirmPassword:['',[Validators.required]],
-    },
-    {
-      validators: this.passwordMatchValidator
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {
+    this.signupForm = this.fb.group(
+      {
+        fullName: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required]],
+        role: ['', [Validators.required]],
+      },
+      {
+        validators: this.passwordMatchValidator
+      }
+    );
+  }
+
+  canDeactivate(): boolean {
+    if (this.signupForm.dirty) {
+      return confirm('You have unsaved changes. Do you really want to leave?');
     }
-  );
+    return true;
   }
   // Password match validator
   passwordMatchValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
-    return password && confirmPassword && password !== confirmPassword ? { passwordMismatch: true } : null;
+    return password && confirmPassword && password !== confirmPassword
+      ? { passwordMismatch: true }
+      : null;
   }
-  
-  
-  
 
-   // Handle form submission
-   onSubmit() {
+  // Handle form submission
+  onSubmit() {
     if (this.signupForm.valid) {
       const signupData = this.signupForm.value;
 
-      this.http.post('https://localhost:7033/api/Login/signup', signupData)
+      this.http.post('https://localhost:44352/api/Account/register', signupData)
         .pipe(
           catchError(error => {
             console.error('Error during signup:', error);
@@ -85,24 +95,13 @@ export class SignupComponent {
     }
   }
 
+  // Getters for form controls
+  get fullName(): FormControl {
+    return this.signupForm.get('fullName') as FormControl;
+  }
+
   get email(): FormControl {
     return this.signupForm.get('email') as FormControl;
-  }
-
-  get fname(): FormControl {
-    return this.signupForm.get('fname') as FormControl;
-  }
-
-  get lname(): FormControl {
-    return this.signupForm.get('lname') as FormControl;
-  }
-
-  get phoneNumber(): FormControl {
-    return this.signupForm.get('phoneNumber') as FormControl;
-  }
-
-  get address(): FormControl {
-    return this.signupForm.get('address') as FormControl;
   }
 
   get password(): FormControl {
@@ -111,5 +110,9 @@ export class SignupComponent {
 
   get confirmPassword(): FormControl {
     return this.signupForm.get('confirmPassword') as FormControl;
+  }
+
+  get role(): FormControl {
+    return this.signupForm.get('role') as FormControl;
   }
 }
