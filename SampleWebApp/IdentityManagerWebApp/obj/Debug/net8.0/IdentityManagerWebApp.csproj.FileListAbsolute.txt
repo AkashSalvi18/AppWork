@@ -9,8 +9,10 @@ C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Humanizer.dll
+C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.Build.Locator.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -46,6 +48,7 @@ C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -154,6 +157,7 @@ C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\IdentityManagerWebApp.csproj.CoreCompileInputs.cache
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\IdentityManagerWebApp.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\IdentityManagerWebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\IdentityManagerWebApp.sourcelink.json
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\scopedcss\bundle\IdentityManagerWebApp.styles.css
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\IdentityManagerWebApp\obj\Debug\net8.0\staticwebassets.development.json

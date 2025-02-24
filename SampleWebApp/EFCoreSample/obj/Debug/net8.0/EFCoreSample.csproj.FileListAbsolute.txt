@@ -153,6 +153,7 @@ C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\E
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\EFCoreSample.csproj.CoreCompileInputs.cache
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\EFCoreSample.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\EFCoreSample.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\EFCoreSample.sourcelink.json
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\scopedcss\bundle\EFCoreSample.styles.css
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\AkashSalvi\Desktop\WorkDir\SampleWebApp\EFCoreSample\obj\Debug\net8.0\staticwebassets.development.json
